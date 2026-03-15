@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Verasens | Heladería, Brunch & Café de Especialidad</title>
+    <meta name="description"
+        content="Experiencia gastronómica premium en Nueva Córdoba. Disfruta de nuestros helados artesanales, brunch exquisito y café de especialidad." />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eca413",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#181611",
+                        "neutral-dark": "#221c10",
+                        "accent-gold": "#d49211",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'bounce-soft': 'bounceSoft 2s infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        bounceSoft: {
+                            '0%, 100%': { transform: 'translateY(-5%)', animationTimingFunction: 'cubic-bezier(0.8,0,1,1)' },
+                            '50%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0,0,0.2,1)' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+
+    <style>
+        /* Transiciones suaves para todos los elementos iterativos */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Clases para animación de scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Grid Masonry para la galería */
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-auto-rows: 220px;
+            gap: 1.5rem;
+        }
+
+        .masonry-item-tall {
+            grid-row: span 2;
+        }
+
+        /* Ocultar barra de desplazamiento pero permitir scroll en menú móvil */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30 selection:text-white antialiased">
+
+
+
+    <!-- Top Navigation Bar -->
+    <header id="main-header"
+        class="fixed top-0 z-50 w-full transition-all duration-300 border-b border-transparent bg-background-dark/0">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="text-primary transition-transform duration-300 group-hover:scale-110 group-active:scale-95">
+                    <svg class="size-8" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd"
+                            d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z"
+                            fill="currentColor" fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold tracking-tight text-white uppercase">Verasens</h1>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-10">
+                <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
+                    href="#destacados">Destacados</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
+                    href="#carta">Brunch</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
+                    href="#galeria">Galería</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
+                    href="#ubicacion">Ubicación</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3 md:gap-4">
+
+
+                <!-- User Button -->
+                <button
+                    class="hidden sm:flex size-10 rounded-full bg-primary/10 hover:bg-primary/20 items-center justify-center border border-primary/20 transition-colors">
+                    <span class="material-symbols-outlined text-primary">person</span>
+                </button>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="mobile-menu-btn" class="md:hidden size-10 flex items-center justify-center text-slate-300">
+                    <span class="material-symbols-outlined text-2xl">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu"
+            class="hidden absolute top-20 left-0 w-full bg-background-dark/95 backdrop-blur-xl border-b border-white/10 flex-col items-center py-6 gap-6 shadow-2xl">
+            <a class="text-lg font-medium text-slate-300 hover:text-primary" href="#destacados">Destacados</a>
+            <a class="text-lg font-medium text-slate-300 hover:text-primary" href="#carta">Brunch</a>
+            <a class="text-lg font-medium text-slate-300 hover:text-primary" href="#galeria">Galería</a>
+            <a class="text-lg font-medium text-slate-300 hover:text-primary" href="#ubicacion">Ubicación</a>
+
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center justify-center px-6 overflow-hidden">
+        <!-- Backgrounds -->
+        <div class="absolute inset-0 z-0">
+            <div
+                class="absolute inset-0 bg-gradient-to-b from-background-dark/80 via-background-dark/50 to-background-dark z-10">
+            </div>
+            <div role="img" aria-label="Acercamiento de alta calidad a bocha de helado artesanal"
+                class="w-full h-full bg-center bg-cover scale-105 duration-[20000ms] transition-transform"
+                style='background-image: url("hero-postres-verasens.webp");'>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-20 max-w-4xl text-center space-y-8 animate-fade-in-up">
+            <div
+                class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-background-dark/50 backdrop-blur-md border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest mx-auto">
+                <span class="relative flex h-2.5 w-2.5">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+                </span>
+                Nueva Córdoba • Abierto Ahora
+            </div>
+
+            <h1
+                class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[1.05] drop-shadow-xl">
+                Heladería, Brunch <br class="hidden md:block" /> & Café
+            </h1>
+
+            <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
+                Experiencia gastronómica premium en el corazón de la ciudad. Sabores artesanales que despiertan tus
+                sentidos cada día.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-5 justify-center pt-6">
+
+                <a href="#carta"
+                    class="bg-white/5 hover:bg-white/10 text-white backdrop-blur-md border border-white/10 hover:border-white/30 px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2 hover:-translate-y-1">
+                    Ver Menú <span class="material-symbols-outlined">menu_book</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce-soft opacity-70">
+            <span class="material-symbols-outlined text-white text-3xl">keyboard_arrow_down</span>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section id="destacados" class="max-w-7xl mx-auto px-6 py-32 reveal">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div class="space-y-3">
+                <span class="text-primary font-bold uppercase tracking-widest text-sm flex items-center gap-2">
+                    <span class="h-px w-8 bg-primary block"></span> Selección de la Casa
+                </span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight">Productos Destacados</h2>
+            </div>
+            <a class="text-primary font-semibold flex items-center gap-2 hover:gap-3 transition-all hover:text-white"
+                href="#carta">
+                Ver menú completo <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Card 1 -->
+            <article
+                class="group bg-neutral-dark/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col">
+                <div class="aspect-square overflow-hidden relative">
+                    <!-- TODO PARA EL DUEÑO: REEMPLAZAR URL POR FOTO REAL DEL LOCAL DE LA COPA HELADA -->
+                    <div role="img" aria-label="Copa helada de chocolate exótico con avellanas"
+                        class="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-110"
+                        style='background-image: url("helado-chocolate-verasens.webp");'>
+                    </div>
+                    <div
+                        class="absolute top-4 left-4 bg-background-dark/90 backdrop-blur-md px-4 py-1.5 rounded-full text-primary text-xs font-bold uppercase tracking-wider border border-primary/20 shadow-lg">
+                        Popular</div>
+                </div>
+                <div class="p-6 space-y-4 flex-1 flex flex-col">
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Copa Ferrero
+                        </h3>
+                        <span class="text-white font-bold text-lg bg-white/5 px-2 py-1 rounded-lg">$9.900</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed flex-1">Indulgente copa de chocolate premium,
+                        avellanas tostadas y base de crema chantilly.</p>
+
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article
+                class="group bg-neutral-dark/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col">
+                <div class="aspect-square overflow-hidden relative">
+                    <!-- Foto real del Wrap brunch -->
+                    <div role="img" aria-label="Wrap brunch artesanal con pollo y vegetales frescos"
+                        class="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-110"
+                        style='background-image: url("wrap-brunch-verasens.webp");'>
+                    </div>
+                </div>
+                <div class="p-6 space-y-4 flex-1 flex flex-col">
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Wrap
+                            Verasens</h3>
+                        <span class="text-white font-bold text-lg bg-white/5 px-2 py-1 rounded-lg">$8.500</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed flex-1">Wrap artesanal con pollo grillado, mix de
+                        verdes frescos, tomates y salsa especial de la casa.</p>
+
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article
+                class="group bg-neutral-dark/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col">
+                <div class="aspect-square overflow-hidden relative">
+                    <!-- TODO PARA EL DUEÑO: REEMPLAZAR URL POR FOTO REAL DEL LOCAL DE LA TOSTADA / BRUNCH -->
+                    <div role="img" aria-label="Tostada de palta en masa madre con huevo poché"
+                        class="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-110"
+                        style='background-image: url("brunch-tostada-prosciutto.webp");'>
+                    </div>
+                </div>
+                <div class="p-6 space-y-4 flex-1 flex flex-col">
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Avocado
+                            Toast</h3>
+                        <span class="text-white font-bold text-lg bg-white/5 px-2 py-1 rounded-lg">$8.500</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed flex-1">Tostada de pan de masa madre, palta smash,
+                        huevo poché y semillas tostadas.</p>
+
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article
+                class="group bg-neutral-dark/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col">
+                <div class="aspect-square overflow-hidden relative">
+                    <!-- TODO PARA EL DUEÑO: REEMPLAZAR URL POR FOTO REAL DEL LOCAL DEL MILKSHAKE -->
+                    <div role="img" aria-label="Batido espeso y cremoso"
+                        class="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-110"
+                        style='background-image: url("milkshake-pistacho-verasens.webp");'>
+                    </div>
+                </div>
+                <div class="p-6 space-y-4 flex-1 flex flex-col">
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Milk Shake
+                        </h3>
+                        <span class="text-white font-bold text-lg bg-white/5 px-2 py-1 rounded-lg">$6.500</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed flex-1">Batido ultra cremoso preparado con nuestro
+                        helado artesanal a elección.</p>
+
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Mini Carta Section -->
+    <section class="bg-gradient-to-b from-neutral-dark/30 to-background-dark py-32" id="carta">
+        <div class="max-w-5xl mx-auto px-6 reveal">
+            <div class="text-center mb-20">
+                <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">Menú</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Experiencia Brunch</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Sabores equilibrados elaborados con ingredientes de
+                    primera calidad para comenzar tu día de la mejor manera.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12">
+                <!-- Item 1 -->
+                <div
+                    class="group flex justify-between items-start border-b border-white/10 pb-6 hover:border-primary/50 transition-colors cursor-pointer">
+                    <div class="space-y-2 pr-4">
+                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors">American
+                            Breakfast</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">Huevos revueltos de campo, bacon crocante,
+                            tostadas de masa madre y café a elección.</p>
+                    </div>
+                    <span class="text-white font-bold text-lg bg-white/5 px-3 py-1 rounded-lg">$7.800</span>
+                </div>
+                <!-- Item 2 -->
+                <div
+                    class="group flex justify-between items-start border-b border-white/10 pb-6 hover:border-primary/50 transition-colors cursor-pointer">
+                    <div class="space-y-2 pr-4">
+                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors">Bowl de
+                            Frutas</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">Selección de frutas de estación, granola
+                            casera horneada con miel y yogurt natural estilo griego.</p>
+                    </div>
+                    <span class="text-white font-bold text-lg bg-white/5 px-3 py-1 rounded-lg">$5.200</span>
+                </div>
+                <!-- Item 3 -->
+                <div
+                    class="group flex justify-between items-start border-b border-white/10 pb-6 hover:border-primary/50 transition-colors cursor-pointer">
+                    <div class="space-y-2 pr-4">
+                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors">Sandwich de
+                            Campo</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">Jamón crudo reserva, rúcula fresca, tomate
+                            seco y queso brie fundido en pan ciabatta rústico.</p>
+                    </div>
+                    <span class="text-white font-bold text-lg bg-white/5 px-3 py-1 rounded-lg">$6.900</span>
+                </div>
+                <!-- Item 4 -->
+                <div
+                    class="group flex justify-between items-start border-b border-white/10 pb-6 hover:border-primary/50 transition-colors cursor-pointer">
+                    <div class="space-y-2 pr-4">
+                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors">Bagel de
+                            Salmón</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">Clásico bagel neoyorquino con queso crema a
+                            las finas hierbas, eneldo, alcaparras y salmón ahumado.</p>
+                    </div>
+                    <span class="text-white font-bold text-lg bg-white/5 px-3 py-1 rounded-lg">$9.200</span>
+                </div>
+                <!-- Item 5 -->
+                <div
+                    class="group flex justify-between items-start border-b border-white/10 pb-6 hover:border-primary/50 transition-colors cursor-pointer">
+                    <div class="space-y-2 pr-4">
+                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors">Shakshuka
+                        </h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">Huevos horneados a fuego lento en salsa de
+                            tomate especiada casera, acompañados de pan de pita.</p>
+                    </div>
+                    <span class="text-white font-bold text-lg bg-white/5 px-3 py-1 rounded-lg">$7.400</span>
+                </div>
+                <!-- Item 6 -->
+                <div
+                    class="group flex justify-between items-start border-b border-white/10 pb-6 hover:border-primary/50 transition-colors cursor-pointer">
+                    <div class="space-y-2 pr-4">
+                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors">Pancakes de
+                            Arándanos</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">Esponjosa torre de pancakes americanos
+                            coronada con manteca, arándanos frescos y sirope de arce real.</p>
+                    </div>
+                    <span class="text-white font-bold text-lg bg-white/5 px-3 py-1 rounded-lg">$6.100</span>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <button
+                    class="border border-white/20 text-white hover:bg-white hover:text-background-dark px-8 py-3 rounded-full font-bold transition-all">
+                    Descargar Menú Completo (PDF)
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Delivery -->
+    <section class="max-w-7xl mx-auto px-6 py-24 text-center reveal">
+        <h2 class="text-3xl font-bold text-white mb-4">Llevamos el sabor a tu casa</h2>
+        <p class="text-slate-400 mb-12 max-w-xl mx-auto">Disfrutá de nuestros productos estés donde estés. Elegí tu
+            plataforma favorita.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+                class="p-10 rounded-2xl bg-neutral-dark border border-white/5 flex flex-col items-center gap-4 hover:-translate-y-2 hover:border-red-500/30 transition-all cursor-pointer group shadow-lg">
+                <div
+                    class="size-20 rounded-full bg-red-500/10 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-5xl text-red-500">delivery_dining</span>
+                </div>
+                <h3 class="text-xl font-bold text-white">PedidosYa</h3>
+                <p class="text-slate-400 text-sm">Envío rápido en toda la zona</p>
+            </div>
+            <div
+                class="p-10 rounded-2xl bg-neutral-dark border border-white/5 flex flex-col items-center gap-4 hover:-translate-y-2 hover:border-orange-500/30 transition-all cursor-pointer group shadow-lg">
+                <div
+                    class="size-20 rounded-full bg-orange-500/10 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-5xl text-orange-500">fastfood</span>
+                </div>
+                <h3 class="text-xl font-bold text-white">Rappi</h3>
+                <p class="text-slate-400 text-sm">Tus favoritos en minutos</p>
+            </div>
+            <div
+                class="p-10 rounded-2xl bg-neutral-dark border border-white/5 flex flex-col items-center gap-4 hover:-translate-y-2 hover:border-blue-500/30 transition-all cursor-pointer group shadow-lg">
+                <div
+                    class="size-20 rounded-full bg-blue-500/10 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-5xl text-blue-500">payments</span>
+                </div>
+                <h3 class="text-xl font-bold text-white">Mercado Pago</h3>
+                <p class="text-slate-400 text-sm">Pagá de forma segura en local</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería Masonry -->
+    <section id="galeria" class="py-32 px-6 bg-background-dark border-t border-white/5 reveal">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Nuestra Galería</h2>
+                <p class="text-slate-400">Capturando momentos inolvidables</p>
+            </div>
+
+            <div class="masonry-grid">
+                <div class="rounded-2xl overflow-hidden masonry-item-tall relative group cursor-pointer shadow-xl">
+                    <div role="img" aria-label="Preparación artística de café"
+                        class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
+                        style='background-image: url("postre-oreo-cheesecake.webp");'>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-4xl">zoom_in</span>
+                    </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl">
+                    <div role="img" aria-label="Acercamiento a postre de dona elegante"
+                        class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
+                        style='background-image: url("torta-cheesecake-verasens.webp");'>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-4xl">zoom_in</span>
+                    </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl">
+                    <div role="img" aria-label="Interior de un café moderno y elegante"
+                        class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
+                        style='background-image: url("wrap-brunch-verasens.webp");'>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-4xl">zoom_in</span>
+                    </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden masonry-item-tall relative group cursor-pointer shadow-xl">
+                    <div role="img" aria-label="Interior del restaurante con iluminación acogedora"
+                        class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
+                        style='background-image: url("brunch-avocado-toast.webp");'>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-4xl">zoom_in</span>
+                    </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl">
+                    <div role="img" aria-label="Deliciosa torre de waffles"
+                        class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
+                        style='background-image: url("helado-chocolate-verasens.webp");'>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-4xl">zoom_in</span>
+                    </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl">
+                    <div role="img" aria-label="Acercamiento a cono de helado"
+                        class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
+                        style='background-image: url("milkshake-pistacho-verasens.webp");'>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white text-4xl">zoom_in</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ubicación & Horarios -->
+    <section class="py-32 max-w-7xl mx-auto px-6 reveal" id="ubicacion">
+        <div class="bg-neutral-dark/50 rounded-3xl border border-white/5 p-8 md:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-10">
+                    <div>
+                        <span
+                            class="text-primary font-bold uppercase tracking-widest text-sm mb-2 block">Contacto</span>
+                        <h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight">Vení a visitarnos</h2>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-5">
+                            <div
+                                class="size-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 border border-primary/20 shadow-inner">
+                                <span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-xl mb-1">Dirección</h4>
+                                <p class="text-slate-400">Chacabuco 625, Nueva Córdoba</p>
+                                <p class="text-slate-400">Córdoba, Argentina</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-5">
+                            <div
+                                class="size-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 border border-primary/20 shadow-inner">
+                                <span class="material-symbols-outlined text-primary text-3xl">schedule</span>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-xl mb-1">Horarios</h4>
+                                <p class="text-slate-400">Lun a Vie: 08:00 — 00:00</p>
+                                <p class="text-slate-400">Sáb y Dom: 09:00 — 01:00</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-5">
+                            <div
+                                class="size-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 border border-primary/20 shadow-inner">
+                                <span class="material-symbols-outlined text-primary text-3xl">call</span>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-xl mb-1">Contacto</h4>
+                                <a href="tel:+543511234567"
+                                    class="text-slate-400 hover:text-primary block transition-colors">+54 351
+                                    1234567</a>
+                                <a href="mailto:hola@verasens.com"
+                                    class="text-slate-400 hover:text-primary block transition-colors">hola@verasens.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button
+                        class="bg-primary hover:bg-accent-gold text-background-dark px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-primary/30 flex items-center justify-center gap-2 hover:-translate-y-1 w-full sm:w-auto">
+                        <span class="material-symbols-outlined">directions</span> Cómo llegar
+                    </button>
+                </div>
+
+                <div
+                    class="relative rounded-3xl overflow-hidden h-[450px] border-2 border-white/5 shadow-2xl bg-neutral-dark/20 flex items-center justify-center">
+                    <!-- MAPA REAL DE GOOGLE MAPS -->
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3404.7937402660163!2d-64.18741302347206!3d-31.42533039642436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432a28faec56cc3%3A0x6283b54cb9aabfe8!2sPaseo%20del%20Buen%20Pastor!5e0!3m2!1ses-419!2sar!4v1715000000000!5m2!1ses-419!2sar"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="absolute inset-0 grayscale-[30%] hover:grayscale-0 transition-all duration-700">
+                    </iframe>
+
+                    <div
+                        class="absolute bottom-6 left-6 right-6 z-20 bg-background-dark/95 backdrop-blur-xl p-5 rounded-2xl border border-white/10 shadow-xl opacity-90 hover:opacity-100 transition-all duration-300 pointer-events-none">
+                        <div class="flex items-center gap-3 mb-1">
+                            <span class="flex h-3 w-3 relative">
+                                <span
+                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                            </span>
+                            <p class="text-white text-base font-bold">Verasens Café & Helados</p>
+                        </div>
+                        <p class="text-primary text-sm pl-6">A 1 cuadra del Paseo del Buen Pastor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-dark pt-24 pb-10 border-t border-white/5 mt-10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-20">
+
+            <div class="space-y-6">
+                <a href="#" class="flex items-center gap-3">
+                    <div class="text-primary">
+                        <svg class="size-7" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <path clip-rule="evenodd"
+                                d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z"
+                                fill="currentColor" fill-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold tracking-tight text-white uppercase">Verasens</h2>
+                </a>
+                <p class="text-slate-400 text-sm leading-relaxed pr-4">
+                    Nacimos para transformar tus momentos cotidianos en experiencias extraordinarias. Calidad artesanal
+                    en cada bocado, directamente al paladar.
+                </p>
+                <div class="flex gap-3">
+                    <a class="size-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-primary transition-all shadow-lg"
+                        href="#" aria-label="Facebook">
+                        <svg class="size-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a class="size-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-primary transition-all shadow-lg"
+                        href="#" aria-label="Twitter">
+                        <svg class="size-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <h4 class="text-white font-bold text-lg">Menú</h4>
+                <ul class="space-y-3 text-sm text-slate-400">
+                    <li><a class="hover:text-primary hover:translate-x-1 inline-block transition-transform"
+                            href="#">Carta Brunch</a></li>
+                    <li><a class="hover:text-primary hover:translate-x-1 inline-block transition-transform"
+                            href="#">Helados Artesanales</a></li>
+                    <li><a class="hover:text-primary hover:translate-x-1 inline-block transition-transform"
+                            href="#">Cafetería de Especialidad</a></li>
+                    <li><a class="hover:text-primary hover:translate-x-1 inline-block transition-transform"
+                            href="#">Opciones Veganas</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-6">
+                <h4 class="text-white font-bold text-lg">Comunidad</h4>
+                <ul class="space-y-3 text-sm text-slate-400">
+                    <li><a class="hover:text-primary hover:translate-x-1 inline-block transition-transform"
+                            href="#">Sobre Nosotros</a></li>
+                    <li><a class="hover:text-primary hover:translate-x-1 inline-block transition-transform"
+                            href="#">Novedades y Eventos</a></li>
+                    <li><a class="hover:text-primary hover:translate-x-1 inline-block transition-transform"
+                            href="#">Trabajá con nosotros</a></li>
+                    <li><a class="hover:text-primary hover:translate-x-1 inline-block transition-transform"
+                            href="#">Franquicias</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-6">
+                <h4 class="text-white font-bold text-lg">Newsletter</h4>
+                <p class="text-sm text-slate-400">Suscribite para recibir promos exclusivas y novedades.</p>
+                <form class="flex gap-2 relative"
+                    onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');">
+                    <input
+                        class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm w-full text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                        placeholder="Tu email..." type="email" required />
+                    <button type="submit"
+                        class="bg-primary hover:bg-accent-gold text-background-dark p-3 rounded-xl transition-colors flex items-center justify-center">
+                        <span class="material-symbols-outlined">send</span>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+        <div
+            class="max-w-7xl mx-auto px-6 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-xs text-slate-500">© 2024 Verasens Argentina. Todos los derechos reservados.</p>
+            <div class="flex gap-6 text-xs text-slate-500">
+                <a class="hover:text-white transition-colors" href="#">Política de Privacidad</a>
+                <a class="hover:text-white transition-colors" href="#">Términos de Servicio</a>
+                <a class="hover:text-white transition-colors" href="#">Cookies</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts Interaccivos -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Mobile Menu Toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+            });
+
+            // Cierra el menú al hacer clic en un enlace
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                });
+            });
+
+            // 2. Sticky Header Effect en Scroll
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-background-dark/95', 'backdrop-blur-md', 'border-white/10');
+                    header.classList.remove('bg-background-dark/0', 'border-transparent');
+                } else {
+                    header.classList.remove('bg-background-dark/95', 'backdrop-blur-md', 'border-white/10');
+                    header.classList.add('bg-background-dark/0', 'border-transparent');
+                }
+            });
+
+            // 3. Scroll Reveal Animation (Intersection Observer)
+            const revealElements = document.querySelectorAll('.reveal');
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Dejar de observar una vez que aparece
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.1, // Se activa cuando el 10% del elemento es visible
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+        });
+    </script>
+</body>
+
+</html>
