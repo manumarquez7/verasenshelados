@@ -93,8 +93,6 @@
 <body
     class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/30 selection:text-white antialiased">
 
-
-
     <!-- Top Navigation Bar -->
     <header id="main-header"
         class="fixed top-0 z-50 w-full transition-all duration-300 border-b border-transparent bg-background-dark/0">
@@ -103,7 +101,9 @@
             <!-- Logo -->
             <a href="#" class="flex items-center gap-3 group">
                 <div class="transition-transform duration-300 group-hover:scale-110 group-active:scale-95">
-                    <img src="logo.jpg" alt="Logo Verasens" class="size-16 rounded-2xl object-cover shadow-lg border border-white/10">
+                    <img src="logo.jpg" alt="Logo Verasens"
+                        class="size-16 rounded-2xl object-cover shadow-lg border border-white/10"
+                        onerror="this.src='https://via.placeholder.com/64?text=VS'">
                 </div>
             </a>
 
@@ -112,7 +112,7 @@
                 <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
                     href="#destacados">Destacados</a>
                 <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
-                    href="#carta">Brunch</a>
+                    href="#carta">Menú</a>
                 <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
                     href="#galeria">Galería</a>
                 <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors"
@@ -121,13 +121,11 @@
 
             <!-- Actions -->
             <div class="flex items-center gap-3 md:gap-4">
-
-
-                <!-- User Button -->
-                <button
-                    class="hidden sm:flex size-10 rounded-full bg-primary/10 hover:bg-primary/20 items-center justify-center border border-primary/20 transition-colors">
-                    <span class="material-symbols-outlined text-primary">person</span>
-                </button>
+                <!-- Action Button Desktop -->
+                <a href="https://wa.me/543511234567" target="_blank"
+                    class="hidden sm:flex bg-primary hover:bg-accent-gold text-background-dark px-5 py-2.5 rounded-xl font-bold text-sm transition-all items-center gap-2 shadow-lg shadow-primary/20 hover:-translate-y-0.5">
+                    Pedir Online
+                </a>
 
                 <!-- Mobile Menu Toggle -->
                 <button id="mobile-menu-btn" class="md:hidden size-10 flex items-center justify-center text-slate-300">
@@ -140,54 +138,80 @@
         <div id="mobile-menu"
             class="hidden absolute top-20 left-0 w-full bg-background-dark/95 backdrop-blur-xl border-b border-white/10 flex-col items-center py-6 gap-6 shadow-2xl">
             <a class="text-lg font-medium text-slate-300 hover:text-primary" href="#destacados">Destacados</a>
-            <a class="text-lg font-medium text-slate-300 hover:text-primary" href="#carta">Brunch</a>
+            <a class="text-lg font-medium text-slate-300 hover:text-primary" href="#carta">Menú</a>
             <a class="text-lg font-medium text-slate-300 hover:text-primary" href="#galeria">Galería</a>
             <a class="text-lg font-medium text-slate-300 hover:text-primary" href="#ubicacion">Ubicación</a>
-
+            <a href="https://wa.me/543511234567" target="_blank"
+               class="bg-primary text-background-dark px-8 py-3 rounded-xl font-bold w-[80%] text-center mt-2">
+                Pedir Online Ahora
+            </a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative min-h-[90vh] flex items-center justify-center px-6 overflow-hidden">
+    <section class="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-24 overflow-hidden">
         <!-- Backgrounds -->
         <div class="absolute inset-0 z-0">
             <div
-                class="absolute inset-0 bg-gradient-to-b from-background-dark/80 via-background-dark/50 to-background-dark z-10">
+                class="absolute inset-0 bg-gradient-to-b from-background-dark/80 via-background-dark/60 to-background-dark z-10">
             </div>
+            <!-- Demo placeholder handling -->
             <div role="img" aria-label="Acercamiento de alta calidad a bocha de helado artesanal"
-                class="w-full h-full bg-center bg-cover scale-105 duration-[20000ms] transition-transform"
+                class="w-full h-full bg-center bg-cover scale-105 duration-[20000ms] transition-transform bg-neutral-800"
                 style='background-image: url("hero-postres-verasens.webp");'>
             </div>
         </div>
 
         <!-- Content -->
-        <div class="relative z-20 max-w-4xl text-center space-y-8 animate-fade-in-up">
+        <div class="relative z-20 max-w-4xl text-center space-y-8 animate-fade-in-up w-full">
             <div
-                class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-background-dark/50 backdrop-blur-md border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest mx-auto">
+                class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-background-dark/60 backdrop-blur-md border border-primary/40 text-primary text-xs font-bold uppercase tracking-widest mx-auto shadow-lg">
                 <span class="relative flex h-2.5 w-2.5">
                     <span
                         class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
                 </span>
-                Nueva Córdoba • Abierto Ahora
+                Experiencia de compra directa
             </div>
 
             <h1
-                class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[1.05] drop-shadow-xl">
-                Heladería, Brunch <br class="hidden md:block" /> & Café
+                class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[1.05] drop-shadow-2xl">
+                Pedí helado y brunch <br class="hidden md:block" /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-gold">en segundos</span>
             </h1>
 
-            <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
-                Experiencia gastronómica premium en el corazón de la ciudad. Sabores artesanales que despiertan tus
-                sentidos cada día.
+            <p class="text-lg md:text-xl text-slate-200 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
+                Más que una lista de links: <strong>tu sucursal digital</strong>. Explorá nuestra carta, hacé tu pedido directo y encontranos al instante.
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-5 justify-center pt-6">
-
-                <a href="#carta"
-                    class="bg-white/5 hover:bg-white/10 text-white backdrop-blur-md border border-white/10 hover:border-white/30 px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2 hover:-translate-y-1">
-                    Ver Menú <span class="material-symbols-outlined">menu_book</span>
+            <!-- Quick Links / Linktree Replacement Visualization -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto pt-6 px-4">
+                <!-- Botón WhatsApp -->
+                <a href="https://wa.me/543511234567" target="_blank" class="bg-white/5 hover:bg-[#25D366]/20 border border-white/10 hover:border-[#25D366]/50 backdrop-blur-md rounded-2xl p-5 flex flex-col items-center gap-3 transition-all hover:-translate-y-1 shadow-lg group">
+                    <svg class="w-10 h-10 text-[#25D366] group-hover:scale-110 transition-transform drop-shadow-md" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                    <span class="text-sm font-bold text-white tracking-wide">WhatsApp</span>
                 </a>
+                
+                <!-- Botón Menú -->
+                <a href="#carta" class="bg-white/5 hover:bg-primary/20 border border-white/10 hover:border-primary/50 backdrop-blur-md rounded-2xl p-5 flex flex-col items-center gap-3 transition-all hover:-translate-y-1 shadow-lg group">
+                    <span class="material-symbols-outlined text-[40px] text-primary group-hover:scale-110 transition-transform drop-shadow-md">restaurant_menu</span>
+                    <span class="text-sm font-bold text-white tracking-wide">Ver Menú</span>
+                </a>
+
+                <!-- Botón Delivery -->
+                <a href="#" class="bg-white/5 hover:bg-red-500/20 border border-white/10 hover:border-red-500/50 backdrop-blur-md rounded-2xl p-5 flex flex-col items-center gap-3 transition-all hover:-translate-y-1 shadow-lg group">
+                    <span class="material-symbols-outlined text-[40px] text-red-500 group-hover:scale-110 transition-transform drop-shadow-md">delivery_dining</span>
+                    <span class="text-sm font-bold text-white tracking-wide">PedidosYa</span>
+                </a>
+
+                <!-- Botón Ubicación -->
+                <a href="#ubicacion" class="bg-white/5 hover:bg-blue-500/20 border border-white/10 hover:border-blue-500/50 backdrop-blur-md rounded-2xl p-5 flex flex-col items-center gap-3 transition-all hover:-translate-y-1 shadow-lg group">
+                    <span class="material-symbols-outlined text-[40px] text-blue-500 group-hover:scale-110 transition-transform drop-shadow-md">location_on</span>
+                    <span class="text-sm font-bold text-white tracking-wide">Ubicación</span>
+                </a>
+            </div>
+            
+            <div class="pt-4 hidden sm:block">
+                <span class="text-white/40 text-sm font-medium tracking-wide">Deslizá para descubrir</span>
             </div>
         </div>
 
@@ -204,7 +228,7 @@
                 <span class="text-primary font-bold uppercase tracking-widest text-sm flex items-center gap-2">
                     <span class="h-px w-8 bg-primary block"></span> Selección de la Casa
                 </span>
-                <h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight">Productos Destacados</h2>
+                <h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight">Directo a tu mesa</h2>
             </div>
             <a class="text-primary font-semibold flex items-center gap-2 hover:gap-3 transition-all hover:text-white"
                 href="#carta">
@@ -215,9 +239,8 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <!-- Card 1 -->
             <article
-                class="group bg-neutral-dark/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col">
-                <div class="aspect-square overflow-hidden relative">
-                    <!-- TODO PARA EL DUEÑO: REEMPLAZAR URL POR FOTO REAL DEL LOCAL DE LA COPA HELADA -->
+                class="group bg-neutral-dark/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 flex flex-col">
+                <div class="aspect-square overflow-hidden relative bg-neutral-800">
                     <div role="img" aria-label="Copa helada de chocolate exótico con avellanas"
                         class="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-110"
                         style='background-image: url("helado-chocolate-verasens.webp");'>
@@ -234,15 +257,21 @@
                     </div>
                     <p class="text-slate-400 text-sm leading-relaxed flex-1">Indulgente copa de chocolate premium,
                         avellanas tostadas y base de crema chantilly.</p>
-
+                    
+                    <!-- Added Action Link within Card to demonstrate functionality -->
+                    <div class="pt-3 border-t border-white/5">
+                        <a href="https://wa.me/543511234567?text=Hola!%20Quiero%20pedir%20una%20Copa%20Ferrero" target="_blank" 
+                           class="text-primary font-medium text-sm flex items-center gap-1 hover:text-white transition-colors group/link">
+                            Añadir al pedido <span class="material-symbols-outlined text-[16px] group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                    </div>
                 </div>
             </article>
 
             <!-- Card 2 -->
             <article
-                class="group bg-neutral-dark/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col">
-                <div class="aspect-square overflow-hidden relative">
-                    <!-- Foto real del Wrap brunch -->
+                class="group bg-neutral-dark/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 flex flex-col">
+                <div class="aspect-square overflow-hidden relative bg-neutral-800">
                     <div role="img" aria-label="Wrap brunch artesanal con pollo y vegetales frescos"
                         class="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-110"
                         style='background-image: url("wrap-brunch-verasens.webp");'>
@@ -256,15 +285,19 @@
                     </div>
                     <p class="text-slate-400 text-sm leading-relaxed flex-1">Wrap artesanal con pollo grillado, mix de
                         verdes frescos, tomates y salsa especial de la casa.</p>
-
+                    <div class="pt-3 border-t border-white/5">
+                        <a href="https://wa.me/543511234567?text=Hola!%20Quiero%20pedir%20un%20Wrap%20Verasens" target="_blank" 
+                           class="text-primary font-medium text-sm flex items-center gap-1 hover:text-white transition-colors group/link">
+                            Añadir al pedido <span class="material-symbols-outlined text-[16px] group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                    </div>
                 </div>
             </article>
 
             <!-- Card 3 -->
             <article
-                class="group bg-neutral-dark/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col">
-                <div class="aspect-square overflow-hidden relative">
-                    <!-- TODO PARA EL DUEÑO: REEMPLAZAR URL POR FOTO REAL DEL LOCAL DE LA TOSTADA / BRUNCH -->
+                class="group bg-neutral-dark/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 flex flex-col">
+                <div class="aspect-square overflow-hidden relative bg-neutral-800">
                     <div role="img" aria-label="Tostada de palta en masa madre con huevo poché"
                         class="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-110"
                         style='background-image: url("brunch-tostada-prosciutto.webp");'>
@@ -278,15 +311,19 @@
                     </div>
                     <p class="text-slate-400 text-sm leading-relaxed flex-1">Tostada de pan de masa madre, palta smash,
                         huevo poché y semillas tostadas.</p>
-
+                    <div class="pt-3 border-t border-white/5">
+                        <a href="https://wa.me/543511234567?text=Hola!%20Quiero%20pedir%20una%20Avocado%20Toast" target="_blank" 
+                           class="text-primary font-medium text-sm flex items-center gap-1 hover:text-white transition-colors group/link">
+                            Añadir al pedido <span class="material-symbols-outlined text-[16px] group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                    </div>
                 </div>
             </article>
 
             <!-- Card 4 -->
             <article
-                class="group bg-neutral-dark/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col">
-                <div class="aspect-square overflow-hidden relative">
-                    <!-- TODO PARA EL DUEÑO: REEMPLAZAR URL POR FOTO REAL DEL LOCAL DEL MILKSHAKE -->
+                class="group bg-neutral-dark/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/5 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 flex flex-col">
+                <div class="aspect-square overflow-hidden relative bg-neutral-800">
                     <div role="img" aria-label="Batido espeso y cremoso"
                         class="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-110"
                         style='background-image: url("milkshake-pistacho-verasens.webp");'>
@@ -300,7 +337,12 @@
                     </div>
                     <p class="text-slate-400 text-sm leading-relaxed flex-1">Batido ultra cremoso preparado con nuestro
                         helado artesanal a elección.</p>
-
+                    <div class="pt-3 border-t border-white/5">
+                        <a href="https://wa.me/543511234567?text=Hola!%20Quiero%20pedir%20un%20Milk%20Shake" target="_blank" 
+                           class="text-primary font-medium text-sm flex items-center gap-1 hover:text-white transition-colors group/link">
+                            Añadir al pedido <span class="material-symbols-outlined text-[16px] group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                    </div>
                 </div>
             </article>
         </div>
@@ -310,62 +352,71 @@
     <section class="bg-gradient-to-b from-neutral-dark/30 to-background-dark py-32" id="carta">
         <div class="max-w-5xl mx-auto px-6 reveal">
             <div class="text-center mb-20">
-                <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">Menú</span>
+                <span class="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">Carta Interactiva</span>
                 <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Experiencia Brunch</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Sabores equilibrados elaborados con ingredientes de
-                    primera calidad para comenzar tu día de la mejor manera.</p>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Elegí lo que más te gusta y pedilo directo. Sin comisiones, sin intermediarios.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12">
                 <!-- Item 1 -->
-                <div
+                <div onclick="window.open('https://wa.me/543511234567', '_blank')"
                     class="group flex justify-between items-start border-b border-white/10 pb-6 hover:border-primary/50 transition-colors cursor-pointer">
                     <div class="space-y-2 pr-4">
-                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors">American
-                            Breakfast</h4>
+                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors flex items-center gap-2">
+                            American Breakfast 
+                            <span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity text-primary">add_shopping_cart</span>
+                        </h4>
                         <p class="text-slate-400 text-sm leading-relaxed">Huevos revueltos de campo, bacon crocante,
                             tostadas de masa madre y café a elección.</p>
                     </div>
                     <span class="text-white font-bold text-lg bg-white/5 px-3 py-1 rounded-lg">$7.800</span>
                 </div>
                 <!-- Item 2 -->
-                <div
+                <div onclick="window.open('https://wa.me/543511234567', '_blank')"
                     class="group flex justify-between items-start border-b border-white/10 pb-6 hover:border-primary/50 transition-colors cursor-pointer">
                     <div class="space-y-2 pr-4">
-                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors">Bowl de
-                            Frutas</h4>
+                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors flex items-center gap-2">
+                            Bowl de Frutas
+                            <span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity text-primary">add_shopping_cart</span>
+                        </h4>
                         <p class="text-slate-400 text-sm leading-relaxed">Selección de frutas de estación, granola
                             casera horneada con miel y yogurt natural estilo griego.</p>
                     </div>
                     <span class="text-white font-bold text-lg bg-white/5 px-3 py-1 rounded-lg">$5.200</span>
                 </div>
                 <!-- Item 3 -->
-                <div
+                <div onclick="window.open('https://wa.me/543511234567', '_blank')"
                     class="group flex justify-between items-start border-b border-white/10 pb-6 hover:border-primary/50 transition-colors cursor-pointer">
                     <div class="space-y-2 pr-4">
-                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors">Sandwich de
-                            Campo</h4>
+                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors flex items-center gap-2">
+                            Sandwich de Campo
+                            <span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity text-primary">add_shopping_cart</span>
+                        </h4>
                         <p class="text-slate-400 text-sm leading-relaxed">Jamón crudo reserva, rúcula fresca, tomate
                             seco y queso brie fundido en pan ciabatta rústico.</p>
                     </div>
                     <span class="text-white font-bold text-lg bg-white/5 px-3 py-1 rounded-lg">$6.900</span>
                 </div>
                 <!-- Item 4 -->
-                <div
+                <div onclick="window.open('https://wa.me/543511234567', '_blank')"
                     class="group flex justify-between items-start border-b border-white/10 pb-6 hover:border-primary/50 transition-colors cursor-pointer">
                     <div class="space-y-2 pr-4">
-                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors">Bagel de
-                            Salmón</h4>
+                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors flex items-center gap-2">
+                            Bagel de Salmón
+                            <span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity text-primary">add_shopping_cart</span>
+                        </h4>
                         <p class="text-slate-400 text-sm leading-relaxed">Clásico bagel neoyorquino con queso crema a
                             las finas hierbas, eneldo, alcaparras y salmón ahumado.</p>
                     </div>
                     <span class="text-white font-bold text-lg bg-white/5 px-3 py-1 rounded-lg">$9.200</span>
                 </div>
                 <!-- Item 5 -->
-                <div
+                <div onclick="window.open('https://wa.me/543511234567', '_blank')"
                     class="group flex justify-between items-start border-b border-white/10 pb-6 hover:border-primary/50 transition-colors cursor-pointer">
                     <div class="space-y-2 pr-4">
-                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors">Shakshuka
+                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors flex items-center gap-2">
+                            Shakshuka
+                            <span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity text-primary">add_shopping_cart</span>
                         </h4>
                         <p class="text-slate-400 text-sm leading-relaxed">Huevos horneados a fuego lento en salsa de
                             tomate especiada casera, acompañados de pan de pita.</p>
@@ -373,11 +424,13 @@
                     <span class="text-white font-bold text-lg bg-white/5 px-3 py-1 rounded-lg">$7.400</span>
                 </div>
                 <!-- Item 6 -->
-                <div
+                <div onclick="window.open('https://wa.me/543511234567', '_blank')"
                     class="group flex justify-between items-start border-b border-white/10 pb-6 hover:border-primary/50 transition-colors cursor-pointer">
                     <div class="space-y-2 pr-4">
-                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors">Pancakes de
-                            Arándanos</h4>
+                        <h4 class="text-white font-bold text-xl group-hover:text-primary transition-colors flex items-center gap-2">
+                            Pancakes de Arándanos
+                            <span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity text-primary">add_shopping_cart</span>
+                        </h4>
                         <p class="text-slate-400 text-sm leading-relaxed">Esponjosa torre de pancakes americanos
                             coronada con manteca, arándanos frescos y sirope de arce real.</p>
                     </div>
@@ -385,11 +438,19 @@
                 </div>
             </div>
 
-            <div class="mt-16 text-center">
-                <button
-                    class="border border-white/20 text-white hover:bg-white hover:text-background-dark px-8 py-3 rounded-full font-bold transition-all">
-                    Descargar Menú Completo (PDF)
-                </button>
+            <!-- Enhanced Action Area -->
+            <div class="mt-20 text-center flex flex-col items-center gap-4">
+                <p class="text-white/60 text-sm">¿Buscas el menú completo en PDF?</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://wa.me/543511234567" target="_blank"
+                        class="bg-primary hover:bg-accent-gold text-background-dark px-8 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg">
+                        <span class="material-symbols-outlined">send</span> Hacer Pedido Ahora
+                    </a>
+                    <button
+                        class="border border-white/20 text-white hover:bg-white hover:text-background-dark px-8 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined">download</span> Descargar PDF
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -398,36 +459,40 @@
     <section class="max-w-7xl mx-auto px-6 py-24 text-center reveal">
         <h2 class="text-3xl font-bold text-white mb-4">Llevamos el sabor a tu casa</h2>
         <p class="text-slate-400 mb-12 max-w-xl mx-auto">Disfrutá de nuestros productos estés donde estés. Elegí tu
-            plataforma favorita.</p>
+            plataforma favorita con un solo tap.</p>
 
+        <!-- Converted to direct links to feel more actionable like Linktree buttons -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div
-                class="p-10 rounded-2xl bg-neutral-dark border border-white/5 flex flex-col items-center gap-4 hover:-translate-y-2 hover:border-red-500/30 transition-all cursor-pointer group shadow-lg">
-                <div
-                    class="size-20 rounded-full bg-red-500/10 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+            <a href="#" class="p-8 rounded-2xl bg-neutral-dark border border-white/5 flex flex-col items-center gap-4 hover:-translate-y-2 hover:border-red-500/50 transition-all cursor-pointer group shadow-lg relative overflow-hidden">
+                <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="material-symbols-outlined text-red-500">open_in_new</span>
+                </div>
+                <div class="size-20 rounded-full bg-red-500/10 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
                     <span class="material-symbols-outlined text-5xl text-red-500">delivery_dining</span>
                 </div>
-                <h3 class="text-xl font-bold text-white">PedidosYa</h3>
-                <p class="text-slate-400 text-sm">Envío rápido en toda la zona</p>
-            </div>
-            <div
-                class="p-10 rounded-2xl bg-neutral-dark border border-white/5 flex flex-col items-center gap-4 hover:-translate-y-2 hover:border-orange-500/30 transition-all cursor-pointer group shadow-lg">
-                <div
-                    class="size-20 rounded-full bg-orange-500/10 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                <h3 class="text-xl font-bold text-white group-hover:text-red-400 transition-colors">PedidosYa</h3>
+                <p class="text-slate-400 text-sm">Pedir con envío rápido</p>
+            </a>
+            <a href="#" class="p-8 rounded-2xl bg-neutral-dark border border-white/5 flex flex-col items-center gap-4 hover:-translate-y-2 hover:border-orange-500/50 transition-all cursor-pointer group shadow-lg relative overflow-hidden">
+                <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="material-symbols-outlined text-orange-500">open_in_new</span>
+                </div>
+                <div class="size-20 rounded-full bg-orange-500/10 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
                     <span class="material-symbols-outlined text-5xl text-orange-500">fastfood</span>
                 </div>
-                <h3 class="text-xl font-bold text-white">Rappi</h3>
+                <h3 class="text-xl font-bold text-white group-hover:text-orange-400 transition-colors">Rappi</h3>
                 <p class="text-slate-400 text-sm">Tus favoritos en minutos</p>
-            </div>
-            <div
-                class="p-10 rounded-2xl bg-neutral-dark border border-white/5 flex flex-col items-center gap-4 hover:-translate-y-2 hover:border-blue-500/30 transition-all cursor-pointer group shadow-lg">
-                <div
-                    class="size-20 rounded-full bg-blue-500/10 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-outlined text-5xl text-blue-500">payments</span>
+            </a>
+            <a href="#ubicacion" class="p-8 rounded-2xl bg-neutral-dark border border-white/5 flex flex-col items-center gap-4 hover:-translate-y-2 hover:border-blue-500/50 transition-all cursor-pointer group shadow-lg relative overflow-hidden">
+                <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="material-symbols-outlined text-blue-500">arrow_downward</span>
                 </div>
-                <h3 class="text-xl font-bold text-white">Mercado Pago</h3>
-                <p class="text-slate-400 text-sm">Pagá de forma segura en local</p>
-            </div>
+                <div class="size-20 rounded-full bg-blue-500/10 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-5xl text-blue-500">store</span>
+                </div>
+                <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Retiro en Local</h3>
+                <p class="text-slate-400 text-sm">Pagá y retirá sin esperas</p>
+            </a>
         </div>
     </section>
 
@@ -436,11 +501,11 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Nuestra Galería</h2>
-                <p class="text-slate-400">Capturando momentos inolvidables</p>
+                <p class="text-slate-400">El sabor entra por los ojos</p>
             </div>
 
             <div class="masonry-grid">
-                <div class="rounded-2xl overflow-hidden masonry-item-tall relative group cursor-pointer shadow-xl">
+                <div class="rounded-2xl overflow-hidden masonry-item-tall relative group cursor-pointer shadow-xl bg-neutral-800">
                     <div role="img" aria-label="Preparación artística de café"
                         class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
                         style='background-image: url("postre-oreo-cheesecake.webp");'>
@@ -450,7 +515,7 @@
                         <span class="material-symbols-outlined text-white text-4xl">zoom_in</span>
                     </div>
                 </div>
-                <div class="rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl">
+                <div class="rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl bg-neutral-800">
                     <div role="img" aria-label="Acercamiento a postre de dona elegante"
                         class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
                         style='background-image: url("torta-cheesecake-verasens.webp");'>
@@ -460,7 +525,7 @@
                         <span class="material-symbols-outlined text-white text-4xl">zoom_in</span>
                     </div>
                 </div>
-                <div class="rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl">
+                <div class="rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl bg-neutral-800">
                     <div role="img" aria-label="Interior de un café moderno y elegante"
                         class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
                         style='background-image: url("wrap-brunch-verasens.webp");'>
@@ -470,7 +535,7 @@
                         <span class="material-symbols-outlined text-white text-4xl">zoom_in</span>
                     </div>
                 </div>
-                <div class="rounded-2xl overflow-hidden masonry-item-tall relative group cursor-pointer shadow-xl">
+                <div class="rounded-2xl overflow-hidden masonry-item-tall relative group cursor-pointer shadow-xl bg-neutral-800">
                     <div role="img" aria-label="Interior del restaurante con iluminación acogedora"
                         class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
                         style='background-image: url("brunch-avocado-toast.webp");'>
@@ -480,7 +545,7 @@
                         <span class="material-symbols-outlined text-white text-4xl">zoom_in</span>
                     </div>
                 </div>
-                <div class="rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl">
+                <div class="rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl bg-neutral-800">
                     <div role="img" aria-label="Deliciosa torre de waffles"
                         class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
                         style='background-image: url("helado-chocolate-verasens.webp");'>
@@ -490,7 +555,7 @@
                         <span class="material-symbols-outlined text-white text-4xl">zoom_in</span>
                     </div>
                 </div>
-                <div class="rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl">
+                <div class="rounded-2xl overflow-hidden relative group cursor-pointer shadow-xl bg-neutral-800">
                     <div role="img" aria-label="Acercamiento a cono de helado"
                         class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
                         style='background-image: url("milkshake-pistacho-verasens.webp");'>
@@ -543,23 +608,24 @@
                         <div class="flex items-start gap-5">
                             <div
                                 class="size-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 border border-primary/20 shadow-inner">
-                                <span class="material-symbols-outlined text-primary text-3xl">call</span>
+                                <span class="material-symbols-outlined text-primary text-3xl">chat</span>
                             </div>
                             <div>
-                                <h4 class="text-white font-bold text-xl mb-1">Contacto</h4>
-                                <a href="tel:+543511234567"
-                                    class="text-slate-400 hover:text-primary block transition-colors">+54 351
-                                    1234567</a>
+                                <h4 class="text-white font-bold text-xl mb-1">Contacto Directo</h4>
+                                <a href="https://wa.me/543511234567" target="_blank"
+                                    class="text-[#25D366] font-semibold hover:text-[#20bd5a] flex items-center gap-1 transition-colors mt-1">
+                                    WhatsApp: +54 351 1234567 <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+                                </a>
                                 <a href="mailto:hola@verasens.com"
-                                    class="text-slate-400 hover:text-primary block transition-colors">hola@verasens.com</a>
+                                    class="text-slate-400 hover:text-primary block transition-colors mt-1">hola@verasens.com</a>
                             </div>
                         </div>
                     </div>
 
-                    <button
-                        class="bg-primary hover:bg-accent-gold text-background-dark px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-primary/30 flex items-center justify-center gap-2 hover:-translate-y-1 w-full sm:w-auto">
+                    <a href="https://maps.google.com/?q=Chacabuco+625+Nueva+Cordoba" target="_blank"
+                        class="bg-primary hover:bg-accent-gold text-background-dark px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-primary/30 flex items-center justify-center gap-2 hover:-translate-y-1 w-full sm:w-auto inline-flex">
                         <span class="material-symbols-outlined">directions</span> Cómo llegar
-                    </button>
+                    </a>
                 </div>
 
                 <div
@@ -596,29 +662,23 @@
             <div class="space-y-6">
                 <a href="#" class="flex items-center gap-3">
                     <div class="transition-transform duration-300 hover:scale-110">
-                        <img src="logo.jpg" alt="Logo Verasens" class="size-16 flex-shrink-0 rounded-2xl object-cover shadow-lg border border-white/10">
+                        <img src="logo.jpg" alt="Logo Verasens" onerror="this.src='https://via.placeholder.com/64?text=VS'"
+                            class="size-16 flex-shrink-0 rounded-2xl object-cover shadow-lg border border-white/10">
                     </div>
                 </a>
                 <p class="text-slate-400 text-sm leading-relaxed pr-4">
                     Nacimos para transformar tus momentos cotidianos en experiencias extraordinarias. Calidad artesanal
-                    en cada bocado, directamente al paladar.
+                    en cada bocado, directamente a tu mesa.
                 </p>
                 <div class="flex gap-3">
+                    <!-- Iconos sociales de demostración -->
                     <a class="size-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-primary transition-all shadow-lg"
-                        href="#" aria-label="Facebook">
-                        <svg class="size-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
-                            </path>
-                        </svg>
+                        href="#" aria-label="Instagram">
+                        <span class="material-symbols-outlined text-lg">photo_camera</span>
                     </a>
-                    <a class="size-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-primary transition-all shadow-lg"
-                        href="#" aria-label="Twitter">
-                        <svg class="size-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z">
-                            </path>
-                        </svg>
+                    <a class="size-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-[#25D366] transition-all shadow-lg"
+                        href="https://wa.me/543511234567" target="_blank" aria-label="WhatsApp">
+                        <span class="material-symbols-outlined text-lg">chat</span>
                     </a>
                 </div>
             </div>
@@ -627,33 +687,29 @@
                 <h4 class="text-white font-bold text-lg">Menú</h4>
                 <ul class="space-y-3 text-sm text-slate-400">
                     <li><a class="hover:text-primary hover:translate-x-1 inline-block transition-transform"
-                            href="#">Carta Brunch</a></li>
+                            href="#carta">Carta Brunch</a></li>
                     <li><a class="hover:text-primary hover:translate-x-1 inline-block transition-transform"
-                            href="#">Helados Artesanales</a></li>
+                            href="#destacados">Helados Artesanales</a></li>
                     <li><a class="hover:text-primary hover:translate-x-1 inline-block transition-transform"
-                            href="#">Cafetería de Especialidad</a></li>
-                    <li><a class="hover:text-primary hover:translate-x-1 inline-block transition-transform"
-                            href="#">Opciones Veganas</a></li>
+                            href="#carta">Cafetería de Especialidad</a></li>
                 </ul>
             </div>
 
             <div class="space-y-6">
-                <h4 class="text-white font-bold text-lg">Comunidad</h4>
+                <h4 class="text-white font-bold text-lg">Atajos</h4>
                 <ul class="space-y-3 text-sm text-slate-400">
+                    <li><a class="hover:text-primary hover:translate-x-1 inline-block transition-transform text-primary font-medium"
+                            href="https://wa.me/543511234567" target="_blank">Pedir por WhatsApp</a></li>
                     <li><a class="hover:text-primary hover:translate-x-1 inline-block transition-transform"
-                            href="#">Sobre Nosotros</a></li>
+                            href="#ubicacion">Cómo llegar</a></li>
                     <li><a class="hover:text-primary hover:translate-x-1 inline-block transition-transform"
-                            href="#">Novedades y Eventos</a></li>
-                    <li><a class="hover:text-primary hover:translate-x-1 inline-block transition-transform"
-                            href="#">Trabajá con nosotros</a></li>
-                    <li><a class="hover:text-primary hover:translate-x-1 inline-block transition-transform"
-                            href="#">Franquicias</a></li>
+                            href="#">Pedir Delivery</a></li>
                 </ul>
             </div>
 
             <div class="space-y-6">
-                <h4 class="text-white font-bold text-lg">Newsletter</h4>
-                <p class="text-sm text-slate-400">Suscribite para recibir promos exclusivas y novedades.</p>
+                <h4 class="text-white font-bold text-lg">Novedades</h4>
+                <p class="text-sm text-slate-400">Suscribite para recibir promos exclusivas.</p>
                 <form class="flex gap-2 relative"
                     onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');">
                     <input
@@ -670,14 +726,18 @@
 
         <div
             class="max-w-7xl mx-auto px-6 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-xs text-slate-500">© 2024 Verasens Argentina. Todos los derechos reservados.</p>
-            <div class="flex gap-6 text-xs text-slate-500">
-                <a class="hover:text-white transition-colors" href="#">Política de Privacidad</a>
-                <a class="hover:text-white transition-colors" href="#">Términos de Servicio</a>
-                <a class="hover:text-white transition-colors" href="#">Cookies</a>
-            </div>
+            <p class="text-xs text-slate-500">© 2024 Verasens Argentina. Creado como una experiencia digital directa.</p>
         </div>
     </footer>
+
+    <!-- Floating WhatsApp Action Button -->
+    <a href="https://wa.me/543511234567" target="_blank" aria-label="Chat en WhatsApp"
+        class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl shadow-[#25D366]/30 hover:scale-110 hover:bg-[#20bd5a] transition-all duration-300 group flex items-center justify-center">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        <span class="absolute right-full mr-4 bg-background-dark/95 backdrop-blur-md text-white font-medium text-sm px-4 py-2 rounded-xl whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-white/10 shadow-xl">
+            ¡Hacé tu pedido ahora!
+        </span>
+    </a>
 
     <!-- Scripts Interaccivos -->
     <script>
